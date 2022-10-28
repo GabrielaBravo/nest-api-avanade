@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param} from '@nestjs/common';
+import { users } from '@prisma/client';
 import { createUserDTO } from './dto/createUser.dto';
 import { UpdateUserDTO } from './dto/updateUser.dto';
 import { UsersService } from './users.service';
@@ -8,7 +9,7 @@ export class UsersController {
     constructor (private readonly usersService: UsersService) {}
 //criar 
 @Post()
-async createUser(@Body() req: createUserDTO): Promise<string>{
+async createUser(@Body() req: createUserDTO): Promise<users>{
     return this.usersService.createUser(req);
 }
 //listar todos
