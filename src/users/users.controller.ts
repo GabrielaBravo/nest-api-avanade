@@ -18,16 +18,19 @@ async findAll() {
     return this.usersService.findAll();
 }
 //listar um
-@Get('id')
+@Get(':id')
 async findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
 }
 //atualizar
-@Patch('id')
+@Patch(':id')
 async update(@Param('id') id: string, @Body() req: UpdateUserDTO){
     return this.usersService.update(id, req);
 }
 //deletar
-
+@Delete(':id')
+async remove(@Param('id') id: string){
+    return this.usersService.remove(id);
+}
 
 }
